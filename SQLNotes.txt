@@ -152,20 +152,32 @@ LIMIT 10;
 
 ### 10. `ON CONFLICT` — assigned to **\_**
 
-**Description:**
+**Description: ON CONFLICT is a feature used in an INSERT statement to handle cases where adding new data would cause a duplicate value error in a column with a unique constraint. This allows SQL to either skip inserting the duplicate (DO NOTHING) or update existing data instead of throwing an error:**
 
 **Example:**
 
 ```sql
-
+INSERT INTO saved_countries (country_name)
+VALUES ('Mexico')
+ON CONFLICT (country_name)
+DO NOTHING;
 ```
 
 ### 11. `LIKE` — assigned to **\_**
 
-**Description:**
+**Description: LIKE is a feature used in a WHERE clause to search for data that matches a specific pattern within a text column. The % symbol is used as a wildcard for any number of characters, while _ represents a single character.:**
 
 **Example:**
 
 ```sql
-
+-- Find all users whose names start with 'La'
+SELECT *
+FROM users
+WHERE name LIKE 'La%';
+```
+```
+-- Find all emails that end with '.com'
+SELECT *
+FROM users
+WHERE email LIKE '%.com';
 ```
